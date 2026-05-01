@@ -118,6 +118,16 @@ func queueFilter(q QueueSchema) QueueAction {
 		// Check status messages for specific errors
 		messages := q.StatusMessages
 		if len(messages) > 0 {
+			// "Unexpected error processing file" is transient — typically a race condition or mount
+			// visibility issue. Leave these alone so arr can retry on the next pass.
+			for _, m := range messages {
+				title := strings.ToLower(m.Title)
+				joinedMessages := strings.ToLower(strings.Join(m.Messages, " "))
+				if strings.Contains(title, "unexpected error processing file") || strings.Contains(joinedMessages, "unexpected error processing file") {
+					return QueueActionNone
+				}
+			}
+
 			for _, m := range messages {
 				if strings.Contains(strings.ToLower(strings.Join(m.Messages, " ")), "no files found are eligible") {
 					return QueueActionBlocklist

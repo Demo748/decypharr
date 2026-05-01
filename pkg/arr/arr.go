@@ -4,11 +4,14 @@ import (
 	"bytes"
 	"cmp"
 	"fmt"
-	json "github.com/bytedance/sonic"
 	"io"
 	"net/http"
+	"net/url"
+	"path/filepath"
 	"strings"
 	"sync"
+
+	json "github.com/bytedance/sonic"
 
 	"github.com/puzpuzpuz/xsync/v4"
 	"github.com/rs/zerolog"
@@ -60,6 +63,10 @@ type Arr struct {
 	DownloadUncached *bool  `json:"download_uncached"`
 	SelectedDebrid   string `json:"selected_debrid,omitempty"` // The debrid service selected for this arr
 	Source           Source `json:"source,omitempty"`          // The source of the arr, e.g. "auto", "manual". Auto means it was automatically detected from the arr
+}
+
+type DownloadClientConfigSchema struct {
+	AutoRedownloadFailed bool `json:"autoRedownloadFailed"`
 }
 
 func New(name, host, token string, cleanup, skipRepair bool, downloadUncached *bool, selectedDebrid, source string) *Arr {
@@ -317,6 +324,101 @@ func (a *Arr) Refresh() {
 	}
 
 	_, _ = a.Request(http.MethodPost, "api/v3/command", payload, nil)
+}
+
+type filesystemFile struct {
+	Name string `json:"name"`
+	Path string `json:"path"`
+}
+
+type filesystemListing struct {
+	Path  string           `json:"path"`
+	Files []filesystemFile `json:"files"`
+}
+
+// CanSeePath checks whether arr can see the provided path via its filesystem endpoint.
+func (a *Arr) CanSeePath(path string, expectedFiles []string) (bool, []filesystemFile, error) {
+	params := url.Values{}
+	params.Set("path", path)
+	params.Set("includeFiles", "true")
+	params.Set("allowFoldersWithoutTrailingSlashes", "true")
+	endpoint := "api/v3/filesystem?" + params.Encode()
+
+	resp, err := a.Request(http.MethodGet, endpoint, nil, nil)
+	if err != nil {
+		return false, nil, err
+	}
+	if resp.Body == nil {
+		return false, nil, fmt.Errorf("filesystem check failed: empty response body")
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode < http.StatusOK || resp.StatusCode >= http.StatusMultipleChoices {
+		return false, nil, fmt.Errorf("filesystem check failed: %s", resp.Status)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
+		return false, nil, fmt.Errorf("filesystem check failed to read response: %w", err)
+	}
+
+	var listings []filesystemListing
+	if err := json.Unmarshal(body, &listings); err != nil {
+		var single filesystemListing
+		if errSingle := json.Unmarshal(body, &single); errSingle != nil {
+			return false, nil, fmt.Errorf("filesystem check failed to parse response: %w", err)
+		}
+		listings = []filesystemListing{single}
+	}
+
+	if len(listings) == 0 {
+		return false, nil, nil
+	}
+
+	allFiles := make([]filesystemFile, 0)
+	for _, listing := range listings {
+		allFiles = append(allFiles, listing.Files...)
+	}
+
+	if len(expectedFiles) == 0 {
+		for _, listing := range listings {
+			if len(listing.Files) > 0 || strings.TrimRight(listing.Path, "/") == strings.TrimRight(path, "/") {
+				return true, allFiles, nil
+			}
+		}
+		return false, allFiles, nil
+	}
+
+	seenCounts := make(map[string]int)
+	for _, listing := range listings {
+		for _, f := range listing.Files {
+			name := strings.ToLower(strings.TrimSpace(f.Name))
+			if name == "" {
+				name = strings.ToLower(strings.TrimSpace(filepath.Base(f.Path)))
+			}
+			if name != "" {
+				seenCounts[name]++
+			}
+		}
+	}
+
+	expectedCounts := make(map[string]int)
+
+	for _, expected := range expectedFiles {
+		name := strings.ToLower(strings.TrimSpace(filepath.Base(expected)))
+		if name == "" {
+			continue
+		}
+		expectedCounts[name]++
+	}
+
+	for name, expectedCount := range expectedCounts {
+		if seenCounts[name] < expectedCount {
+			return false, allFiles, nil
+		}
+	}
+
+	return true, allFiles, nil
 }
 
 func inferType(host, name string) Type {

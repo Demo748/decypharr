@@ -228,9 +228,81 @@ func (d *Downloader) processSymlink(entry *storage.Entry, mountPath string) erro
 		}
 	}
 
-	d.markAsCompleted(entry)
+	// d.markAsCompleted(entry)
+	go d.completeSymlinkAsync(entry, mountPath)
 
 	return nil
+}
+
+func (d *Downloader) completeSymlinkAsync(entry *storage.Entry, mountPath string) {
+	d.waitForArrFilesystem(entry, mountPath, 2*time.Minute, 3*time.Second, 3)
+	d.markAsCompleted(entry)
+}
+
+func (d *Downloader) waitForArrFilesystem(entry *storage.Entry, mountPath string, timeout time.Duration, interval time.Duration, stableSuccessesRequired int) {
+	a := d.manager.arr.GetOrCreate(entry.Category)
+	if a == nil || a.Host == "" || a.Token == "" {
+		return
+	}
+
+	files := entry.GetActiveFiles()
+	expected := make([]string, 0, len(files))
+	for _, file := range files {
+		expected = append(expected, file.Name)
+	}
+
+	deadline := time.Now().Add(timeout)
+	stableSuccesses := 0
+	for attempt := 1; ; attempt++ {
+		visible, apiFiles, err := a.CanSeePath(mountPath, expected)
+		if err == nil {
+			for _, apiFile := range apiFiles {
+				name := strings.TrimSpace(apiFile.Name)
+				if name == "" {
+					name = filepath.Base(apiFile.Path)
+				}
+				d.logger.Debug().
+					Str("arr", a.Name).
+					Int("attempt", attempt).
+					Str("file", name).
+					Str("file_path", apiFile.Path).
+					Msg("arr filesystem file")
+			}
+		}
+		if err == nil && visible {
+			stableSuccesses++
+			if stableSuccesses >= stableSuccessesRequired {
+				d.logger.Info().
+					Str("arr", a.Name).
+					Int("attempt", attempt).
+					Int("expected_files", len(expected)).
+					Str("path", mountPath).
+					Msg("arr filesystem can see all expected files")
+				return
+			}
+		} else {
+			stableSuccesses = 0
+		}
+
+		if err != nil {
+			d.logger.Debug().
+				Err(err).
+				Str("arr", a.Name).
+				Int("attempt", attempt).
+				Msg("arr filesystem check not ready")
+		}
+
+		if time.Now().After(deadline) {
+			d.logger.Warn().
+				Str("arr", a.Name).
+				Str("path", mountPath).
+				Dur("timeout", timeout).
+				Msg("timed out waiting for arr filesystem visibility")
+			return
+		}
+
+		time.Sleep(interval)
+	}
 }
 
 // processDownload downloads all files for an entry with progress tracking
