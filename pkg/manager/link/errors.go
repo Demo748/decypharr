@@ -133,6 +133,8 @@ func ErrorCodeToLinkError(code string) *Error {
 		return NewPermanentError(ErrLinkNotFound, code)
 	case "bandwidth_exceeded", "quota_exceeded", "daily_limit_exceeded", "bytes_limit_reached":
 		return NewAccountError(ErrBandwidthExceeded, code)
+	case "bytes_limit_reached":
+		return NewAccountError(ErrBandwidthExceeded, code)
 	case "link_expired":
 		return NewRefetchableError(ErrLinkExpired, code)
 	case "file_not_available":
@@ -145,6 +147,8 @@ func ErrorCodeToLinkError(code string) *Error {
 		return NewPermanentError(Err404, code)
 	case "429":
 		return NewRetryableError(Err429, code)
+	case "too_many_attempts":
+    	return NewRetryableError(Err429, code)
 	case "503":
 		return NewRetryableError(Err503, code)
 	default:
