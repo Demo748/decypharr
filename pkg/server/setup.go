@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -75,7 +75,7 @@ func (s *Server) sendSetupError(w http.ResponseWriter, message string, err error
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusBadRequest)
-	_ = json.ConfigDefault.NewEncoder(w).Encode(response)
+	_ = json.NewEncoder(w).Encode(response)
 }
 
 // SetupCompleteRequest represents the complete setup data from frontend
@@ -120,7 +120,7 @@ func (s *Server) setupCompleteHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req SetupCompleteRequest
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		s.sendSetupError(w, "Invalid request format", err)
 		return
 	}
@@ -301,5 +301,5 @@ func (s *Server) setupCompleteHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	_ = json.ConfigDefault.NewEncoder(w).Encode(response)
+	_ = json.NewEncoder(w).Encode(response)
 }

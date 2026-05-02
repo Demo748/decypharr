@@ -3,11 +3,11 @@ package manager
 import (
 	"github.com/go-co-op/gocron/v2"
 	"github.com/puzpuzpuz/xsync/v4"
-	"github.com/sirrobot01/decypharr/pkg/arr"
-	debrid "github.com/sirrobot01/decypharr/pkg/debrid/common"
-	debridTypes "github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/storage"
-	"github.com/sirrobot01/decypharr/pkg/usenet"
+	"github.com/demo748/decypharr/pkg/arr"
+	debrid "github.com/demo748/decypharr/pkg/debrid/common"
+	debridTypes "github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/usenet"
 )
 
 func (m *Manager) SetMountManager(mountMgr MountManager) {

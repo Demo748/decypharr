@@ -6,11 +6,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	debrid "github.com/sirrobot01/decypharr/pkg/debrid/common"
-	"github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/utils"
+	debrid "github.com/demo748/decypharr/pkg/debrid/common"
+	"github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/storage"
 )
 
 func (m *Manager) syncTorrents(ctx context.Context) {

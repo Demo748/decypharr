@@ -2,7 +2,7 @@ package alldebrid
 
 import (
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 )
 
 type errorResponse struct {

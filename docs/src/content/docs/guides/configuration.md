@@ -331,4 +331,4 @@ REPAIR__ENABLED=true
 REPAIR__INTERVAL=30m
 ```
 
-See [defaults.go](https://github.com/sirrobot01/decypharr/blob/main/internal/config/defaults.go) for all defaults.
+See [defaults.go](https://github.com/demo748/decypharr/blob/main/internal/config/defaults.go) for all defaults.

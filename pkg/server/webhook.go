@@ -4,8 +4,8 @@ import (
 	"cmp"
 	"net/http"
 
-	json "github.com/bytedance/sonic"
-	"github.com/sirrobot01/decypharr/pkg/manager"
+	"encoding/json"
+	"github.com/demo748/decypharr/pkg/manager"
 )
 
 func (s *Server) handleTautulli(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +23,7 @@ func (s *Server) handleTautulli(w http.ResponseWriter, r *http.Request) {
 		AutoProcess bool   `json:"autoProcess"`
 	}
 
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&payload); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&payload); err != nil {
 		s.logger.Error().Err(err).Msg("Failed to parse webhook body")
 		http.Error(w, "Failed to parse webhook body: "+err.Error(), http.StatusBadRequest)
 		return

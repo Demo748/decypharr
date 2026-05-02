@@ -16,11 +16,11 @@ import (
 
 	"github.com/puzpuzpuz/xsync/v4"
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/customerror"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/retry"
-	"github.com/sirrobot01/decypharr/internal/utils"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/customerror"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/retry"
+	"github.com/demo748/decypharr/internal/utils"
 )
 
 // ProviderPool manages connections for a single provider using a LIFO stack

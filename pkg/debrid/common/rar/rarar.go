@@ -14,8 +14,8 @@ import (
 	"time"
 	"unicode/utf8"
 
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/retry"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/retry"
 )
 
 // Constants from the Python code

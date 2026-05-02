@@ -15,16 +15,16 @@ import (
 	"strings"
 	"time"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/request"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/debrid/account"
-	"github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/version"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/request"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/debrid/account"
+	"github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/version"
 	"go.uber.org/ratelimit"
 )
 
@@ -119,7 +119,7 @@ func (tb *Torbox) doGet(endpoint string, queryParams map[string]string, result i
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}
@@ -147,7 +147,7 @@ func (tb *Torbox) doPostForm(endpoint string, formData map[string]string, result
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}

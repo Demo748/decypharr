@@ -5,14 +5,14 @@ import (
 	"context"
 	"encoding/base64"
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"io"
 	"net/http"
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/request"
-	"github.com/sirrobot01/decypharr/internal/utils"
+	"github.com/demo748/decypharr/internal/request"
+	"github.com/demo748/decypharr/internal/utils"
 )
 
 type Client struct {

@@ -13,11 +13,11 @@ import (
 	"strings"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/nntp"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/storage"
-	"github.com/sirrobot01/decypharr/pkg/usenet/fs"
-	"github.com/sirrobot01/decypharr/pkg/usenet/types"
+	"github.com/demo748/decypharr/internal/nntp"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/usenet/fs"
+	"github.com/demo748/decypharr/pkg/usenet/types"
 )
 
 // ZIP format constants

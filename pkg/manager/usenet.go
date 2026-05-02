@@ -7,10 +7,10 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/sirrobot01/decypharr/internal/config"
-	debridTypes "github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/storage"
-	"github.com/sirrobot01/decypharr/pkg/usenet/parser"
+	"github.com/demo748/decypharr/internal/config"
+	debridTypes "github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/usenet/parser"
 )
 
 // AddNewNZB processes an NZB file and stores it as a storage.Entry

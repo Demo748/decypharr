@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/utils"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/utils"
 )
 
 // FuseConfig holds the simplified configuration for the FUSE filesystem

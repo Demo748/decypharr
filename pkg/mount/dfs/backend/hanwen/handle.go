@@ -12,8 +12,8 @@ import (
 
 	"github.com/hanwen/go-fuse/v2/fs"
 	"github.com/hanwen/go-fuse/v2/fuse"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/vfs"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/pkg/mount/dfs/vfs"
 )
 
 var (

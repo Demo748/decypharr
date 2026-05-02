@@ -7,9 +7,9 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/pkg/storage"
-	"github.com/sirrobot01/decypharr/pkg/usenet/parser"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/usenet/parser"
 )
 
 // JobType represents the type of processing job

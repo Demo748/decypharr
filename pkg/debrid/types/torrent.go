@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/arr"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/arr"
 )
 
 type Torrent struct {

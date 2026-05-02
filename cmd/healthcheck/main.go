@@ -11,9 +11,9 @@ import (
 	"strings"
 	"time"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 )
 
 // HealthStatus represents the status of various components

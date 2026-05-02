@@ -8,9 +8,9 @@ import (
 	"sync"
 
 	"github.com/puzpuzpuz/xsync/v4"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/customerror"
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/customerror"
+	"github.com/demo748/decypharr/pkg/storage"
 )
 
 // RepairJobCounts holds per-status counts of repair jobs.

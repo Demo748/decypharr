@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"cmp"
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"io"
 	"net/http"
 	"strings"
@@ -12,10 +12,10 @@ import (
 
 	"github.com/puzpuzpuz/xsync/v4"
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/request"
-	"github.com/sirrobot01/decypharr/internal/utils"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/request"
+	"github.com/demo748/decypharr/internal/utils"
 	"golang.org/x/sync/singleflight"
 )
 

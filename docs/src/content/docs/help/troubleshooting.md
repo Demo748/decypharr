@@ -518,7 +518,7 @@ rm /config/config.json
 
 If you can't resolve the issue:
 
-1. **Check GitHub Issues:** https://github.com/sirrobot01/decypharr/issues
+1. **Check GitHub Issues:** https://github.com/demo748/decypharr/issues
 2. **Provide:**
    - Decypharr version (`/version`)
    - Relevant logs (with `log_level: debug`)

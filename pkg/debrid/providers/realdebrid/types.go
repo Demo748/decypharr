@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 )
 
 type AvailabilityResponse map[string]Hoster

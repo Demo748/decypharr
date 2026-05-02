@@ -9,16 +9,16 @@ import (
 	"strconv"
 	"strings"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/arr"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	repairpkg "github.com/sirrobot01/decypharr/pkg/repair"
-	"github.com/sirrobot01/decypharr/pkg/storage"
-	"github.com/sirrobot01/decypharr/pkg/version"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/arr"
+	"github.com/demo748/decypharr/pkg/manager"
+	repairpkg "github.com/demo748/decypharr/pkg/repair"
+	"github.com/demo748/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/version"
 	"github.com/sourcegraph/conc/iter"
 	"golang.org/x/crypto/bcrypt"
 )
@@ -214,7 +214,7 @@ func getNZBContentFromFile(fileHeader *multipart.FileHeader) ([]byte, error) {
 
 func (s *Server) handleRepairMedia(w http.ResponseWriter, r *http.Request) {
 	var req RepairRequest
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -513,7 +513,7 @@ func (s *Server) handleGetConfig(w http.ResponseWriter, r *http.Request) {
 func (s *Server) handleUpdateConfig(w http.ResponseWriter, r *http.Request) {
 	// Decode the incoming config update
 	var newConfig config.Config
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&newConfig); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&newConfig); err != nil {
 		s.logger.Error().Err(err).Msg("Failed to decode config update request")
 		http.Error(w, "Invalid request body: "+err.Error(), http.StatusBadRequest)
 		return
@@ -577,7 +577,7 @@ func (s *Server) handleDeleteRepairJob(w http.ResponseWriter, r *http.Request) {
 	var req struct {
 		IDs []string `json:"ids"`
 	}
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -624,7 +624,7 @@ func (s *Server) handleUpdateAuth(w http.ResponseWriter, r *http.Request) {
 		Password        string `json:"password"`
 		ConfirmPassword string `json:"confirm_password"`
 	}
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}

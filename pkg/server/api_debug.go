@@ -1,12 +1,12 @@
 package server
 
 import (
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/manager"
 )
 
 func (s *Server) handleIngests(w http.ResponseWriter, r *http.Request) {
@@ -39,7 +39,7 @@ func (s *Server) handleIngestsByDebrid(w http.ResponseWriter, r *http.Request) {
 // handleSpeedTest runs a speed test for a specific provider
 func (s *Server) handleSpeedTest(w http.ResponseWriter, r *http.Request) {
 	var req manager.SpeedTestRequest
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, "invalid request body: "+err.Error(), http.StatusBadRequest)
 		return
 	}

@@ -8,8 +8,8 @@ import (
 	"sync/atomic"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/crypto"
-	"github.com/sirrobot01/decypharr/internal/nntp"
+	"github.com/demo748/decypharr/internal/crypto"
+	"github.com/demo748/decypharr/internal/nntp"
 )
 
 var decryptionBufPool = sync.Pool{}

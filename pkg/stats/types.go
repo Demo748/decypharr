@@ -1,8 +1,8 @@
 package stats
 
 import (
-	"github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/manager"
 )
 
 // Snapshot holds a point-in-time stats snapshot.

@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	debrid "github.com/sirrobot01/decypharr/pkg/debrid/common"
-	debridTypes "github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/utils"
+	debrid "github.com/demo748/decypharr/pkg/debrid/common"
+	debridTypes "github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/manager"
 )
 
 // Collector owns the cached stats snapshot and the HTTP handler.

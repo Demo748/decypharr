@@ -7,12 +7,12 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/backend"
-	_ "github.com/sirrobot01/decypharr/pkg/mount/dfs/backend/register"
-	fuseconfig "github.com/sirrobot01/decypharr/pkg/mount/dfs/config"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/vfs"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/pkg/mount/dfs/backend"
+	_ "github.com/demo748/decypharr/pkg/mount/dfs/backend/register"
+	fuseconfig "github.com/demo748/decypharr/pkg/mount/dfs/config"
+	"github.com/demo748/decypharr/pkg/mount/dfs/vfs"
 )
 
 // Manager manages FUSE filesystem instances with proper caching

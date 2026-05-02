@@ -4,7 +4,7 @@ import (
 	"sync"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 )
 
 // Service manages and dispatches notifications to all configured notifiers

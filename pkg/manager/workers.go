@@ -4,9 +4,9 @@ import (
 	"context"
 
 	"github.com/go-co-op/gocron/v2"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	debrid "github.com/sirrobot01/decypharr/pkg/debrid/common"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/utils"
+	debrid "github.com/demo748/decypharr/pkg/debrid/common"
 )
 
 // runInitialCalls performs any initial calls of worker functions

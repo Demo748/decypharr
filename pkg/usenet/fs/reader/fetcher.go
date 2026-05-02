@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/nntp"
+	"github.com/demo748/decypharr/internal/nntp"
 )
 
 // SegmentFetcher handles downloading segments from NNTP with deduplication and retry.

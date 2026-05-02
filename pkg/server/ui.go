@@ -3,9 +3,9 @@ package server
 import (
 	"net/http"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -33,7 +33,7 @@ func (s *Server) LoginHandler(w http.ResponseWriter, r *http.Request) {
 		Password string `json:"password"`
 	}
 
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&credentials); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&credentials); err != nil {
 		http.Error(w, "Invalid request", http.StatusBadRequest)
 		return
 	}

@@ -9,11 +9,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/customerror"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	fuseconfig "github.com/sirrobot01/decypharr/pkg/mount/dfs/config"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/vfs/ranges"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/customerror"
+	"github.com/demo748/decypharr/pkg/manager"
+	fuseconfig "github.com/demo748/decypharr/pkg/mount/dfs/config"
+	"github.com/demo748/decypharr/pkg/mount/dfs/vfs/ranges"
 )
 
 const (

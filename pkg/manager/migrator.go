@@ -3,7 +3,7 @@ package manager
 import (
 	"context"
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"os"
 	"path/filepath"
 	"strings"
@@ -11,10 +11,10 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	debridTypes "github.com/sirrobot01/decypharr/pkg/debrid/types"
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	debridTypes "github.com/demo748/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/pkg/storage"
 )
 
 // Migrator handles migration from cache JSON files to unified bbolt system

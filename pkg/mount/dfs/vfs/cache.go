@@ -16,12 +16,12 @@ import (
 
 	"github.com/puzpuzpuz/xsync/v4"
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/config"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/vfs/ranges"
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/pkg/mount/dfs/config"
+	"github.com/demo748/decypharr/pkg/mount/dfs/vfs/ranges"
+	"github.com/demo748/decypharr/pkg/storage"
 	"golang.org/x/sync/singleflight"
 )
 

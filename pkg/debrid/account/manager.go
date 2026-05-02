@@ -8,10 +8,10 @@ import (
 
 	"github.com/puzpuzpuz/xsync/v4"
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/request"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/request"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/debrid/types"
 	"github.com/sourcegraph/conc/pool"
 	"go.uber.org/ratelimit"
 )

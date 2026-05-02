@@ -16,13 +16,13 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/gorilla/sessions"
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	"github.com/sirrobot01/decypharr/pkg/server/qbit"
-	"github.com/sirrobot01/decypharr/pkg/server/sabnzbd"
-	"github.com/sirrobot01/decypharr/pkg/server/webdav"
-	"github.com/sirrobot01/decypharr/pkg/stats"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/pkg/server/qbit"
+	"github.com/demo748/decypharr/pkg/server/sabnzbd"
+	"github.com/demo748/decypharr/pkg/server/webdav"
+	"github.com/demo748/decypharr/pkg/stats"
 )
 
 //go:embed templates/*

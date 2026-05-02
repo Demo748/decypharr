@@ -3,7 +3,7 @@ package notifications
 import (
 	"bytes"
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"net/http"
 	"time"
 )

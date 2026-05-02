@@ -29,7 +29,7 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/logger"
 )
 
 // Common errors

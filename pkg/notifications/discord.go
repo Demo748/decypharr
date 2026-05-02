@@ -3,13 +3,13 @@ package notifications
 import (
 	"bytes"
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"io"
 	"net/http"
 	"strings"
 	"time"
 
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 )
 
 // DiscordEmbed represents a Discord embed object

@@ -3,7 +3,7 @@ package sabnzbd
 import (
 	"fmt"
 
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/storage"
 )
 
 // SABnzbd API response types based on official documentation

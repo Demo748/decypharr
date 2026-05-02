@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 	"golang.org/x/crypto/bcrypt"
 )
 

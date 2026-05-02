@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
-	"github.com/sirrobot01/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/config"
 )
 
 func (s *Server) authMiddleware(next http.Handler) http.Handler {
@@ -62,7 +62,7 @@ func (s *Server) isAPIRequest(r *http.Request) bool {
 func (s *Server) sendJSONError(w http.ResponseWriter, message string, statusCode int) {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
-	err := json.ConfigDefault.NewEncoder(w).Encode(map[string]interface{}{
+	err := json.NewEncoder(w).Encode(map[string]interface{}{
 		"error":  message,
 		"status": statusCode,
 	})

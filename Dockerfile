@@ -30,7 +30,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
     CGO_ENABLED=1 \
     xx-go build -trimpath \
-    -ldflags="-w -s -X github.com/sirrobot01/decypharr/pkg/version.Version=${VERSION} -X github.com/sirrobot01/decypharr/pkg/version.Channel=${CHANNEL}" \
+    -ldflags="-w -s -X github.com/demo748/decypharr/pkg/version.Version=${VERSION} -X github.com/demo748/decypharr/pkg/version.Channel=${CHANNEL}" \
     -o /decypharr && \
     xx-verify /decypharr
 
@@ -63,10 +63,10 @@ ARG VERSION=0.0.0
 ARG CHANNEL=dev
 
 LABEL version="${VERSION}-${CHANNEL}"
-LABEL org.opencontainers.image.source="https://github.com/sirrobot01/decypharr"
+LABEL org.opencontainers.image.source="https://github.com/demo748/decypharr"
 LABEL org.opencontainers.image.title="decypharr"
-LABEL org.opencontainers.image.authors="sirrobot01"
-LABEL org.opencontainers.image.documentation="https://github.com/sirrobot01/decypharr/blob/main/README.md"
+LABEL org.opencontainers.image.authors="demo748"
+LABEL org.opencontainers.image.documentation="https://github.com/demo748/decypharr/blob/main/README.md"
 
 # Install dependencies including rclone (from binary)
 RUN apk add --no-cache fuse3 ca-certificates su-exec shadow curl unzip tzdata && \

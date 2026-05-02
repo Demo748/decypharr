@@ -3,9 +3,9 @@ package external
 import (
 	"context"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
-	"github.com/sirrobot01/decypharr/internal/rclone"
+	"github.com/demo748/decypharr/internal/rclone"
 )
 
 // Stats represents rclone statistics

@@ -8,10 +8,10 @@ import (
 	"sync/atomic"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/backend"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/config"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/vfs"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/pkg/mount/dfs/backend"
+	"github.com/demo748/decypharr/pkg/mount/dfs/config"
+	"github.com/demo748/decypharr/pkg/mount/dfs/vfs"
 	"github.com/winfsp/cgofuse/fuse"
 )
 

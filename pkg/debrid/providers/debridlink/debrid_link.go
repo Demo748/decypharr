@@ -10,15 +10,15 @@ import (
 	"strings"
 	"time"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/request"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/debrid/account"
-	"github.com/sirrobot01/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/request"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/debrid/account"
+	"github.com/demo748/decypharr/pkg/debrid/types"
 	"go.uber.org/ratelimit"
 )
 
@@ -109,7 +109,7 @@ func (dl *DebridLink) doGet(endpoint string, queryParams map[string]string, resu
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}
@@ -475,7 +475,7 @@ func (dl *DebridLink) _fetchDownloadLinks(account *account.Account, page, limit 
 	if resp.ContentLength == 0 {
 		return links, fmt.Errorf("empty response from debridlink API")
 	}
-	if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(&res); err != nil {
+	if err := json.NewDecoder(resp.Body).Decode(&res); err != nil {
 		return links, err
 	}
 	if !res.Success || res.Value == nil {

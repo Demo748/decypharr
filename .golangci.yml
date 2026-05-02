@@ -50,7 +50,7 @@ formatters:
       simplify: true
     goimports:
       local-prefixes:
-        - github.com/sirrobot01/protodex
+        - github.com/demo748/protodex
   exclusions:
     generated: lax
     paths:

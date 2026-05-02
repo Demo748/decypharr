@@ -2,7 +2,7 @@ package server
 
 import (
 	"fmt"
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 	"net/http"
 	"path/filepath"
 	"sort"
@@ -10,10 +10,10 @@ import (
 	"strings"
 
 	"github.com/go-chi/chi/v5"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/customerror"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/customerror"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/storage"
 )
 
 // BrowseEntry represents a file or folder in the browse view
@@ -339,7 +339,7 @@ func (s *Server) handleBatchDeleteBrowseTorrents(w http.ResponseWriter, r *http.
 		IDs []string `json:"ids"`
 	}
 
-	if err := json.ConfigDefault.NewDecoder(r.Body).Decode(&req); err != nil {
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 		http.Error(w, "Invalid request", http.StatusBadRequest)
 		return
 	}

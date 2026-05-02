@@ -9,16 +9,16 @@ import (
 	"strconv"
 	"sync"
 
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs"
-	"github.com/sirrobot01/decypharr/pkg/mount/external"
-	"github.com/sirrobot01/decypharr/pkg/mount/rclone"
-	"github.com/sirrobot01/decypharr/pkg/repair"
-	"github.com/sirrobot01/decypharr/pkg/server"
-	"github.com/sirrobot01/decypharr/pkg/version"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/pkg/mount/dfs"
+	"github.com/demo748/decypharr/pkg/mount/external"
+	"github.com/demo748/decypharr/pkg/mount/rclone"
+	"github.com/demo748/decypharr/pkg/repair"
+	"github.com/demo748/decypharr/pkg/server"
+	"github.com/demo748/decypharr/pkg/version"
 )
 
 func Start(ctx context.Context) error {

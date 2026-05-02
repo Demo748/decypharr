@@ -1,7 +1,7 @@
 package manager
 
 import (
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/pkg/storage"
 )
 
 func (m *Manager) RemoveFromProvider(providerEntry *storage.ProviderEntry) error {

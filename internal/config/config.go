@@ -12,7 +12,7 @@ import (
 	"strings"
 	"sync"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 )
 
 type (

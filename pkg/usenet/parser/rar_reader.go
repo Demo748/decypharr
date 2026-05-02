@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/sirrobot01/decypharr/internal/crypto"
-	"github.com/sirrobot01/decypharr/internal/nntp"
-	"github.com/sirrobot01/decypharr/pkg/usenet/types"
+	"github.com/demo748/decypharr/internal/crypto"
+	"github.com/demo748/decypharr/internal/nntp"
+	"github.com/demo748/decypharr/pkg/usenet/types"
 )
 
 // rarReader provides a continuous stream across RAR volumes

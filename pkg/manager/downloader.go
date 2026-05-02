@@ -15,9 +15,9 @@ import (
 	"time"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/pkg/notifications"
-	"github.com/sirrobot01/decypharr/pkg/storage"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/pkg/notifications"
+	"github.com/demo748/decypharr/pkg/storage"
 	"github.com/sourcegraph/conc/pool"
 )
 

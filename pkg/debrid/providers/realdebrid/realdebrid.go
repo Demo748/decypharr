@@ -13,19 +13,19 @@ import (
 	"sync"
 	"time"
 
-	json "github.com/bytedance/sonic"
+	"encoding/json"
 
-	"github.com/sirrobot01/decypharr/internal/customerror"
-	"github.com/sirrobot01/decypharr/internal/request"
-	"github.com/sirrobot01/decypharr/internal/utils"
-	"github.com/sirrobot01/decypharr/pkg/debrid/account"
-	"github.com/sirrobot01/decypharr/pkg/debrid/common/rar"
-	"github.com/sirrobot01/decypharr/pkg/debrid/types"
+	"github.com/demo748/decypharr/internal/customerror"
+	"github.com/demo748/decypharr/internal/request"
+	"github.com/demo748/decypharr/internal/utils"
+	"github.com/demo748/decypharr/pkg/debrid/account"
+	"github.com/demo748/decypharr/pkg/debrid/common/rar"
+	"github.com/demo748/decypharr/pkg/debrid/types"
 	"go.uber.org/ratelimit"
 
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/config"
-	"github.com/sirrobot01/decypharr/internal/logger"
+	"github.com/demo748/decypharr/internal/config"
+	"github.com/demo748/decypharr/internal/logger"
 )
 
 const (
@@ -127,7 +127,7 @@ func (r *RealDebrid) doGet(endpoint string, result interface{}) (*http.Response,
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}
@@ -155,7 +155,7 @@ func (r *RealDebrid) doPostForm(endpoint string, formData map[string]string, res
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}
@@ -185,7 +185,7 @@ func (r *RealDebrid) doPut(endpoint string, body []byte, contentType string, res
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}
@@ -220,7 +220,7 @@ func (r *RealDebrid) doGetWithClient(client *request.Client, fullURL string, que
 	defer resp.Body.Close()
 
 	if result != nil && resp.StatusCode >= 200 && resp.StatusCode < 300 && resp.ContentLength != 0 {
-		if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+		if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 			return resp, err
 		}
 	}
@@ -249,13 +249,13 @@ func (r *RealDebrid) doPostFormWithClient(client *request.Client, fullURL string
 
 	if resp.StatusCode >= 200 && resp.StatusCode < 300 {
 		if result != nil && resp.ContentLength != 0 {
-			if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(result); err != nil {
+			if err := json.NewDecoder(resp.Body).Decode(result); err != nil {
 				return resp, err
 			}
 		}
 	} else {
 		if errorResult != nil && resp.ContentLength != 0 {
-			if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(errorResult); err != nil {
+			if err := json.NewDecoder(resp.Body).Decode(errorResult); err != nil {
 				return resp, err
 			}
 		}
@@ -851,7 +851,7 @@ func (r *RealDebrid) getTorrents(offset int, limit int) (int, []*types.Torrent, 
 	}
 
 	var data []TorrentsResponse
-	if err := json.ConfigDefault.NewDecoder(resp.Body).Decode(&data); err != nil {
+	if err := json.NewDecoder(resp.Body).Decode(&data); err != nil {
 		return 0, torrents, err
 	}
 

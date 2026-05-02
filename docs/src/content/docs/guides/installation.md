@@ -51,12 +51,12 @@ docker run -d \
     --device /dev/fuse:/dev/fuse:rwm \
     --cap-add SYS_ADMIN \
     --security-opt apparmor:unconfined \
-  sirrobot01/decypharr:latest
+  demo748/decypharr:latest
 ```
 
 ## Binary
 
-Download the latest release from [GitHub Releases](https://github.com/sirrobot01/decypharr/releases).
+Download the latest release from [GitHub Releases](https://github.com/demo748/decypharr/releases).
 
 ```bash
 # Extract

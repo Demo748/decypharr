@@ -12,10 +12,10 @@ import (
 
 	"github.com/puzpuzpuz/xsync/v4"
 	"github.com/rs/zerolog"
-	"github.com/sirrobot01/decypharr/internal/customerror"
-	"github.com/sirrobot01/decypharr/pkg/manager"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/config"
-	"github.com/sirrobot01/decypharr/pkg/mount/dfs/vfs"
+	"github.com/demo748/decypharr/internal/customerror"
+	"github.com/demo748/decypharr/pkg/manager"
+	"github.com/demo748/decypharr/pkg/mount/dfs/config"
+	"github.com/demo748/decypharr/pkg/mount/dfs/vfs"
 	"github.com/winfsp/cgofuse/fuse"
 )
 

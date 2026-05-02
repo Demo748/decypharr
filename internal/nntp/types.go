@@ -1,7 +1,7 @@
 package nntp
 
 import (
-	nntpyenc "github.com/sirrobot01/decypharr/internal/nntp/yenc"
+	nntpyenc "github.com/demo748/decypharr/internal/nntp/yenc"
 )
 
 
